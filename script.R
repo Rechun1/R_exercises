@@ -41,3 +41,25 @@ length(crim[crim>30])
 #Tax rates
 
 hist(tax)
+
+#There are particulary suburbs in a higher level, counting values above 500.
+
+length(tax[tax>500])
+
+#Pupil-Teacher Ratio
+
+hist(ptratio)
+#It seems a bit equilibrate between values of [14, 22], specially [20,21]. Counting values bellow 14 - the smallest ratios.
+
+length(ptratio[ptratio<14])
+
+#item e
+
+table(chas)
+
+#the value 1 says that the suburb bounds the charles rivers, there are 35 suburbs that bound river
+
+#item f
+
+median (ptratio)
+
