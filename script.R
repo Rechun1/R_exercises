@@ -30,3 +30,14 @@ aux = names(Boston.corr.crim[order(abs(Boston.corr.crim), decreasing = T)][1:4])
 for(i in aux){
   plot(get(i), crim, xlab=i)
 }
+
+#item d
+
+summary(crim)
+#crime rates
+#Yes, because the maximum value is much higher then the 3th quartile counting crime reates above 30 
+length(crim[crim>30])
+
+#Tax rates
+
+hist(tax)
