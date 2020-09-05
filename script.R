@@ -63,3 +63,33 @@ table(chas)
 
 median (ptratio)
 
+#item g
+
+subs.lw = which(medv<median(medv))
+print(subs.lw)
+
+#Compare with the rest of the other predictors.
+
+Boston.corr.subs.lw = cor(Boston[subs.lw, ])
+corr.compare = data.frame('lower'=Boston.corr.subs.lw[, "medv"], 'all'=Boston.corr[, "medv"])
+corr.compare$diff = corr.compare$lower - corr.compare$all
+#Check how much vary the differences.
+
+hist(corr.compare$diff, xlab="Correlation Differences")
+
+
+#Now, in absolute values.
+
+hist(abs(corr.compare$diff), xlab="Correlation Differences")
+
+
+#The main correlation diffences were at the variables:
+  
+  main.diffs = head(corr.compare[order(abs(corr.compare$diff), decreasing = T), ], 5)
+
+print(main.diffs)
+
+print(rownames(main.diffs))
+
+#The abrupt difference by far was rm - average number of rooms per dwelling, so the number of rooms has much less influence in the cheapest houses than the more expensive ones, this phenomenon also seem happening in ptratio. The dis increased compared to all suburbs correlation, it seems that further from employment centres is better for cheaper house prices.
+
