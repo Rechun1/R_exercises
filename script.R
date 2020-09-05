@@ -93,3 +93,26 @@ print(rownames(main.diffs))
 
 #The abrupt difference by far was rm - average number of rooms per dwelling, so the number of rooms has much less influence in the cheapest houses than the more expensive ones, this phenomenon also seem happening in ptratio. The dis increased compared to all suburbs correlation, it seems that further from employment centres is better for cheaper house prices.
 
+#item h
+
+hist(rm, main="Distribution of Rooms by Dwelling", xlab="Rooms")
+
+
+#More than 7 rooms per dwelling
+
+length(rm[rm>7])
+#More than 8 rooms per dwelling
+
+length(rm[rm>8])
+#e prices of these houses compared over all others suburb houses.
+
+frm =as.factor(as.character(lapply(rm, function(x) ifelse(x>8, "]8, +Inf[", ifelse(x>7,"]7,8]","[0,7]")))))
+plot(frm, medv, varwidth=T, xlab="Number of Rooms", 
+     ylab="Median Values by $1000s",
+     title="Median Value of Owner-Occupied Homes")
+
+
+#The graph shows that houses of more than 8 rooms tend to be much more expensive, but not always, and even an outlier exists of very lower price than houses with less rooms, as seen below.
+
+Boston[rm>8 & medv<30, ]
+      
